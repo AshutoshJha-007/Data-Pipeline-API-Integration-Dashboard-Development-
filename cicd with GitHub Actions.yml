@@ -1,0 +1,27 @@
+name: Deploy FastAPI Service
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run API Tests
+        run: pytest
+
+      - name: Deploy API
+        run: uvicorn api:app --host 0.0.0.0 --port 8000
