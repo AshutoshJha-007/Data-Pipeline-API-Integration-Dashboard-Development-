@@ -25,7 +25,6 @@ uvicorn api:app --reload
 Run the provided setup.sql file to create necessary tables.
 3️⃣ Run with Docker
 sh
-CopyEdit
 docker build -t data-pipeline .
 docker run -p 8000:8000 data-pipeline
 ________________________________________
